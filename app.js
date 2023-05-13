@@ -4,7 +4,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 app.get("/question", (req, res) => {
   const message = req.query.message
@@ -31,3 +31,4 @@ app.get("/question", (req, res) => {
   askAquestionCHATGPT(message)
 })
 
+app.listen(4000, () => console.log(`the server run on the ${PORT} port`))
