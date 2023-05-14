@@ -6,7 +6,10 @@ const app = express();
 
 const PORT = process.env.PORT || 4000
 
-app.get("/question", (req, res) => {
+let answer
+let returnedData
+
+app.get("/question", (req, res) => {   //call example http://localhost:4000/question?message=hello%20world
   const message = req.query.message
   res.send(message)
 
@@ -28,7 +31,7 @@ app.get("/question", (req, res) => {
       }
   }
 
-  askAquestionCHATGPT(message)
+ return askAquestionCHATGPT(message)
 })
 
 app.listen(4000, () => console.log(`the server run on the ${PORT} port`))
