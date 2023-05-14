@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000
 let answer
 let returnedData
 
-app.get("/question", (req, res) => {   //call example http://localhost:4000/question?message=hello%20world
+app.get("/question", (req, res) => {   //request example http://localhost:4000/question?message=hello%20world
   const message = req.query.message
   res.send(message)
 
