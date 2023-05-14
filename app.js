@@ -1,11 +1,11 @@
 const { Configuration, OpenAIApi } = require("openai");
+require('dotenv').config()
 
 const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 4000
  
-
 
 let returnedData
 
@@ -14,7 +14,7 @@ app.get("/question", (req, res) => {   //request example http://localhost:4000/q
   res.send(message)
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
   
