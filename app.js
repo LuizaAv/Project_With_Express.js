@@ -1,12 +1,12 @@
 const { Configuration, OpenAIApi } = require("openai");
-require('dotenv').config()
 
 const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 4000
+ 
 
-let answer
+
 let returnedData
 
 app.get("/question", (req, res) => {   //request example http://localhost:4000/question?message=hello%20world
@@ -14,7 +14,7 @@ app.get("/question", (req, res) => {   //request example http://localhost:4000/q
   res.send(message)
 
   const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
   
@@ -31,7 +31,7 @@ app.get("/question", (req, res) => {   //request example http://localhost:4000/q
       }
   }
 
- return askAquestionCHATGPT(message)
+  return askAquestionCHATGPT(message)
 })
 
 app.listen(4000, () => console.log(`the server run on the ${PORT} port`))
