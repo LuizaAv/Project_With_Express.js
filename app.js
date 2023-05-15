@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 4000
 
 app.get("/question", (req, res) => {   //request example http://localhost:4000/question?message=hello%20world
   const message = req.query.message
-  res.send(message)
 
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -23,13 +22,15 @@ app.get("/question", (req, res) => {   //request example http://localhost:4000/q
               prompt: text,
               max_tokens: 2000
             });
+          res.send(completion.data.choices[0].text)
           console.log(completion.data.choices[0].text);
       }catch(error){
           console.log(error)
       }
   }
 
-  return askAquestionCHATGPT(message)
+
+  askAquestionCHATGPT(message)
 })
 
 app.listen(4000, () => console.log(`the server run on the ${PORT} port`))
