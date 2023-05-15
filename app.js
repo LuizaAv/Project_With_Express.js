@@ -23,7 +23,6 @@ app.get("/question", (req, res) => {   //request example http://localhost:3001/q
               max_tokens: 2000
             });
           res.send(completion.data.choices[0].text)
-          console.log(completion.data.choices[0].text);
       }catch(error){
           console.log(error)
       }
